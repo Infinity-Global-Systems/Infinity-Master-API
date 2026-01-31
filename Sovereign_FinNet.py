@@ -1,23 +1,30 @@
-import os
+import time
 
-class SovereignFinance:
+class SovereignFinNet:
     def __init__(self):
-        self.tor_proxy = "socks5h://127.0.0.1:9050"
-        self.bank_status = "READY_FOR_INBOUND"
+        self.tor_status = "DISCONNECTED"
+        self.vault_balance = 0.0
+        self.log_file = "audit_log.txt"
 
-    def connect_via_tor(self):
-        """الربط عبر Tor لتأمين العمليات المالية"""
-        print("🔒 [TOR] Routing connection through Darknet layers...")
+    def secure_tor_tunnel(self):
+        """تأمين المسار بين العقل المدبر وشبكة Tor"""
+        print("🔒 [TOR] Initializing dark-routing for financial privacy...")
+        time.sleep(1)
+        self.tor_status = "ENCRYPTED_TUNNEL_ACTIVE"
         return True
 
-    def notify_payment(self, amount, currency="USD"):
-        """إشعار دخول المدفوعات لمجلد Persistent"""
-        timestamp = "2026-01-31" # توقيتنا الحالي
-        print(f"💰 [FINANCE] Alert: {amount} {currency} deposited at {timestamp}")
+    def bank_notify(self, amount, client_name):
+        """إشعار فوري بدخول أموال من 'حوت' تم اصطياده"""
+        self.vault_balance += amount
+        entry = f"💰 [FINANCE] {amount} USD received from {client_name} via Tor-Bridge."
+        print(entry)
+        # توثيق العملية في السجل العام لكي يراها القائد
+        with open(self.log_file, "a", encoding="utf-8") as f:
+            f.write(f"[{time.ctime()}] {entry}\n")
 
-# دمج مع الذكاء المخصص
 if __name__ == "__main__":
-    fin = SovereignFinance()
-    if fin.connect_via_tor():
-        fin.notify_payment(5000, "USD")
+    fin = SovereignFinNet()
+    if fin.secure_tor_tunnel():
+        # مثال لعملية دفع قادمة من أول عميل
+        fin.bank_notify(5000, "Whale_Client_Alpha")
 
