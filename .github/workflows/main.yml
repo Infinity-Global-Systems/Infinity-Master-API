@@ -1,15 +1,22 @@
-name: Sovereign System Audit
+name: Sovereign Self-Evolution
 on:
   schedule:
-    - cron: '0 0 * * *' # يعمل تلقائياً كل ليلة
-  workflow_dispatch: # يسمح لك بتشغيله يدوياً
+    - cron: '0 0 * * *'
+  workflow_dispatch:
 
 jobs:
-  audit:
+  evolve:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v3
-      - name: Run Gateway Handshake
+      - name: Execute Sovereign Logic
         run: python gateway.py
+      - name: Auto-Commit Audit Logs
+        run: |
+          git config --local user.email "infinitywork3000@gmail.com"
+          git config --local user.name "Infinity-Global-Systems"
+          git add audit_log.txt
+          git commit -m "🏛️ Daily Sovereign Audit [Auto-Generated]" || echo "No changes"
+          git push
 
