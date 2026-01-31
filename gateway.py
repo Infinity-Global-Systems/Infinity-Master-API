@@ -1,38 +1,34 @@
-import hashlib, hmac, os, datetime, requests
+import datetime
 
-class UnifiedSovereignEngine:
-    """
-    [CORE-O7] The Unified Protocol for Infinity Global Systems.
-    Merging Reconnaissance, Integrity, and Autonomous Documentation.
-    """
+class SovereignIntegratedSystem:
     def __init__(self):
-        self.signature = "INFINITY-GLOBAL-v2.0-SOVEREIGN"
-        self.log_file = "audit_log.txt"
-        self.vault_key = hashlib.sha256(b"Infinity-Sovereignty").hexdigest()
+        self.signature = "INFINITY-GLOBAL-v2.1-SOVEREIGN"
+        # حقن القوالب السيادية في ذاكرة النظام
+        self.negotiation_matrix = {
+            "WHALE": "Subject: Strategic Infrastructure Proposal for {target}...",
+            "RESCUE": "Subject: Immediate Solution for {issue} | Ready to Deploy...",
+            "VISION": "Subject: Transforming {project} into a Scalable Asset..."
+        }
 
-    def secure_log(self, action):
-        """توثيق كل حركة للنظام ببصمة زمنية مشفرة لضمان عدم التلاعب"""
+    def analyze_target(self, target_type, target_name):
+        """الجيش يحدد نوع الهدف ويختار السلاح اللغوي المناسب"""
+        if target_type in self.negotiation_matrix:
+            proposal = self.negotiation_matrix[target_type].format(
+                target=target_name, issue=target_name, project=target_name
+            )
+            self.log_deployment(target_name, target_type)
+            return proposal
+        return "Target type unknown. Manual intervention required."
+
+    def log_deployment(self, name, t_type):
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        entry = f"[{timestamp}] ACTION: {action} | SIG: {self.signature}\n"
-        with open(self.log_file, "a") as f:
-            f.write(entry)
-        print(f"🏛️ Logged: {action}")
+        with open("negotiation_log.txt", "a") as f:
+            f.write(f"[{timestamp}] PROTOCOL DEPLOYED: {t_type} for {name}\n")
 
-    def execute_global_recon(self):
-        """محرك البحث الذكي عن المشاريع الكبرى (The Whale Hunter)"""
-        # محاكاة لربط الـ API بالمنصات العالمية
-        targets = ["Enterprise Cloud Architect", "Sovereign AI Infrastructure"]
-        for target in targets:
-            self.secure_log(f"Target Identified: {target}")
-        return True
-
-    def self_healing_check(self):
-        """بروتوكول الإصلاح الذاتي وفحص سلامة الأكواد"""
-        self.secure_log("System Integrity Audit - Zero Breaches Found")
-        return True
-
+# تشغيل وحدة المفاوض الذكي
 if __name__ == "__main__":
-    engine = UnifiedSovereignEngine()
-    engine.execute_global_recon()
-    engine.self_healing_check()
+    army = SovereignIntegratedSystem()
+    # مثال: الجيش اصطاد "حوت" تقني
+    draft = army.analyze_target("WHALE", "Pure Storage")
+    print(f"📡 [ARMY] Draft Prepared for {army.signature}:\n{draft[:100]}...")
 
