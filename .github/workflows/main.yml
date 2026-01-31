@@ -1,25 +1,49 @@
-name: Sovereign Self-Evolution & Finance
+name: Sovereign-Empire-Control
 on:
-  workflow_dispatch: # للتشغيل اليدوي
+  workflow_dispatch: # للتشغيل اليدوي بضغطة زر
 
 jobs:
-  build:
+  Sovereign-Audit-Job:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: 🛰️ [STEP 1] Fetching Army from GitHub
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: 🐍 [STEP 2] Setting up Python Intelligence
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
 
-      - name: Initialize Audit Log
-        run: touch audit_log.txt # حل مشكلة الفشل السابقة
+      - name: 📂 [STEP 3] Infrastructure Initialization
+        run: |
+          echo "🔱 Initializing System Files..."
+          touch audit_log.txt
+          ls -R # هذا الأمر سيكشف لنا كل الملفات المخفية والموجودة
 
-      - name: Run Finance Node
-        run: python3 Sovereign_FinNet.py # تشغيل وحدة الأرباح
+      - name: 🔍 [STEP 4] Deep System Audit
+        run: |
+          if [ -f "system_audit.py" ]; then
+            python3 system_audit.py
+          else
+            echo "❌ CRITICAL: system_audit.py not found in root!"
+          fi
 
-      - name: Run Master Gateway
-        run: python3 gateway.py # تشغيل العقل المدبر
+      - name: 💰 [STEP 5] Execute Finance Node
+        run: |
+          if [ -f "Sovereign_FinNet.py" ]; then
+            python3 Sovereign_FinNet.py
+          else
+            echo "⚠️ WARNING: Sovereign_FinNet.py is missing!"
+          fi
+
+      - name: 🏛️ [STEP 6] Deploy Master Gateway
+        run: |
+          if [ -f "gateway.py" ]; then
+            python3 gateway.py
+          else
+            echo "❌ ERROR: Master gateway.py is missing!"
+          fi
+
+      - name: 📄 [STEP 7] Final Log Display
+        run: cat audit_log.txt
 
