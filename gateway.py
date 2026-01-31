@@ -1,71 +1,44 @@
-import hashlib
-import datetime
 import json
+import datetime
 
-class UnifiedSovereignEngine:
-    """
-    [CORE-O7] The Unified Protocol for Infinity Global Systems.
-    Central Command Node with Cloud-Sync Integration.
-    """
+class SovereignIntelligence:
     def __init__(self):
-        self.signature = "INFINITY-GLOBAL-v2.2-SOVEREIGN"
-        self.log_file = "audit_log.txt"
-        self.negotiation_matrix = {
-            "WHALE": "Subject: Strategic Infrastructure Proposal for {target}...",
-            "RESCUE": "Subject: Immediate Solution for {issue} | Ready to Deploy...",
-            "VISION": "Subject: Transforming {project} into a Scalable Asset..."
+        self.signature = "INFINITY-GLOBAL-v3.0-SUPREME"
+        # ترسانة الأكواد النادرة (مفاتيح النجاح)
+        self.expert_vault = {
+            "security": "RE-001: Advanced AES-GCM Encryption with Dynamic Key Rotation.",
+            "infra": "RE-002: Zero-Downtime Global Scaling via Multi-Cloud Mesh.",
+            "fintech": "RE-003: High-Frequency Ledger Processing & Secure Banking API."
         }
 
-    def secure_log(self, action):
-        """توثيق الحركات ببصمة زمنية مشفرة"""
-        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        entry = f"[{timestamp}] ACTION: {action} | SIG: {self.signature}\n"
-        with open(self.log_file, "a", encoding="utf-8") as f:
-            f.write(entry)
-        print(f"🏛️ [LOG] {action}")
+    def formulate_expert_response(self, client_need):
+        """تخصيص الرد بناءً على هوية العميل واحتياجه"""
+        needs = client_need.lower()
+        if "security" in needs or "encryption" in needs:
+            expertise = "CYBER-DEFENSE"
+            code_snippet = self.expert_vault["security"]
+            strategy = "Our protocol ensures total data sovereignty using 4096-bit RSA keys."
+        elif "infra" in needs or "architecture" in needs:
+            expertise = "INFRA-ARCHITECT"
+            code_snippet = self.expert_vault["infra"]
+            strategy = "Implementing Kubernetes orchestration for infinite horizontal scaling."
+        else:
+            expertise = "GENERAL-ELITE"
+            code_snippet = "Standard Sovereign Logic."
+            strategy = "Strategic digital transformation for global operations."
 
-    def analyze_target(self, target_type, target_name):
-        """وحدة المفاوض الذكي"""
-        if target_type in self.negotiation_matrix:
-            proposal = self.negotiation_matrix[target_type].format(
-                target=target_name, issue=target_name, project=target_name
-            )
-            self.secure_log(f"Negotiation Draft Prepared for {target_name}")
-            return proposal
-        return "Target unknown."
+        return {
+            "expert_label": expertise,
+            "rare_code_ref": code_snippet,
+            "strategy_pitch": strategy
+        }
 
-    def receive_cloud_report(self, cloud_data):
-        """
-        [NEW] استقبال ومعالجة تقارير الأداء من Sovereign-Cloud-Engine
-        تقوم هذه الوحدة بفك تشفير البيانات ودمجها في السجل السيادي.
-        """
-        try:
-            # محاكاة فحص سلامة البيانات (Integrity Check)
-            print(f"📥 [GATEWAY] Intercepting Cloud Data Packet...")
-            data = json.loads(cloud_data)
-            
-            log_entry = (f"Cloud-Sync Success | Origin: {data['origin']} | "
-                         f"Nodes: {data['active_nodes']} | Health: {data['system_health']}")
-            
-            self.secure_log(log_entry)
-            return "✅ [SYNC] Data Integrated into Sovereign Core."
-        except Exception as e:
-            self.secure_log(f"❌ [SYNC ERROR] Integrity Breach or Corrupt Data: {str(e)}")
-            return "Execution Failed."
-
+# دمج الذكاء في بوابة التحكم
 if __name__ == "__main__":
-    # تشغيل النظام المركزي
-    gateway = UnifiedSovereignEngine()
-    
-    # 1. محاكاة استقبال بيانات من المحرك السحابي
-    mock_cloud_data = json.dumps({
-        "origin": "Sovereign-Cloud-Engine",
-        "active_nodes": 5,
-        "system_health": "OPTIMAL"
-    })
-    
-    gateway.receive_cloud_report(mock_cloud_data)
-    
-    # 2. فحص سلامة النظام
-    gateway.secure_log("Full System Handshake Complete.")
+    ai = SovereignIntelligence()
+    # تجربة: تخيل أن الرادار اصطاد عميلاً يطلب "خبير أمن"
+    test_need = "We need an expert in security and encryption"
+    final_package = ai.formulate_expert_response(test_need)
+    print(f"🔱 [SUPREME CONTROL] Deploying {final_package['expert_label']} Protocol...")
+    print(f"📄 [PITCH]: {final_package['strategy_pitch']}")
 
