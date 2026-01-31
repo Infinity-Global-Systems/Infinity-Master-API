@@ -1,0 +1,15 @@
+name: Sovereign System Audit
+on:
+  schedule:
+    - cron: '0 0 * * *' # يعمل تلقائياً كل ليلة
+  workflow_dispatch: # يسمح لك بتشغيله يدوياً
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Run Gateway Handshake
+        run: python gateway.py
+
