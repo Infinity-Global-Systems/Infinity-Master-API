@@ -1,6 +1,6 @@
-name: Sovereign Self-Evolution
+name: Sovereign Self-Evolution & Finance
 on:
-  workflow_dispatch: # للتشغيل اليدوي الذي قمت به
+  workflow_dispatch: # للتشغيل اليدوي
 
 jobs:
   build:
@@ -14,11 +14,12 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Initialize Sovereign Files
-        run: |
-          touch audit_log.txt
-          echo "SYSTEM INITIALIZED" > audit_log.txt
+      - name: Initialize Audit Log
+        run: touch audit_log.txt # حل مشكلة الفشل السابقة
 
-      - name: Execute Sovereign Core
-        run: python3 gateway.py
+      - name: Run Finance Node
+        run: python3 Sovereign_FinNet.py # تشغيل وحدة الأرباح
+
+      - name: Run Master Gateway
+        run: python3 gateway.py # تشغيل العقل المدبر
 
