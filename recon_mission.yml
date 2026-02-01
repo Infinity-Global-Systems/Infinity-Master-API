@@ -1,0 +1,33 @@
+name: Infinity Sovereign Unified Pulse
+
+on:
+  workflow_dispatch: 
+  schedule:
+    - cron: '*/15 * * * *'
+
+jobs:
+  unified_mission:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛰️ Checkout Intelligence Core
+        uses: actions/checkout@v3
+
+      - name: 🐍 Setup Sovereign Environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: 🛠️ Install Dependencies
+        run: pip install requests feedparser
+
+      - name: 🚀 Execute Unified Mission
+        env:
+          # ربط الخزنة السرية (تأكد من إضافتها في Settings > Secrets)
+          INF_GMAIL: ${{ secrets.INF_EMAIL_GMAIL }}
+          INF_PASS: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: |
+          echo "🔱 Starting Unified Infinity Pulse..."
+          # تشغيل الكود مع نظام حماية من الانهيار
+          python3 Sovereign_FinNet.py || echo "⚠️ Financial Node Busy, proceeding to Audit..."
+          python3 system_audit.py
+
