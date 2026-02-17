@@ -1,0 +1,15 @@
+# IGS SOVEREIGN CONTAINER V1.0
+# Base image: Python 3.9 slim (Minimal & Secure)
+FROM python:3.9-slim
+
+# Set the working directory inside the container
+WORKDIR /IGS_CORE
+
+# Copy all IGS files from Drive D to the container
+COPY . .
+
+# Install all dependencies automatically
+RUN pip install --no-cache-dir requests psutil cryptography
+
+# Define the master ignition command
+CMD ["python", "IGS_Master_Controller.py"]
